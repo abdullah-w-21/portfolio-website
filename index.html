@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Wasim | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        :root {
+            --background: #0a0b0f;
+            --surface: #13141f;
+            --primary: #7C3AED;
+            --secondary: #64ffda;
+            --text: #e2e8f0;
+            --text-secondary: #94a3b8;
+            --accent: #ff49db;
+        }
+
+        /* Animations */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            background-color: var(--background);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 11, 15, 0.8);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(
+                45deg,
+                rgba(124, 58, 237, 0.1),
+                rgba(100, 255, 218, 0.1)
+            );
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .name-title {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .typing-text {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            min-height: 2em;
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        /* Experience Section */
+        .experience {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .experience-card {
+            background: var(--surface);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            margin-bottom: 2rem;
+            transition: all 0.4s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .experience-card h3 {
+            color: var(--secondary);
+            margin-bottom: 0.8rem;
+            font-size: 1.5rem;
+        }
+
+        .experience-card .company {
+            color: var(--primary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .experience-card .duration {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .experience-card ul {
+            list-style: none;
+        }
+
+        .experience-card ul li {
+            margin-bottom: 0.8rem;
+            position: relative;
+            padding-left: 1.5rem;
+            color: var(--text);
+        }
+
+        .experience-card ul li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+        }
+
+        /* Skills Section */
+        .skills {
+            padding: 6rem 2rem;
+            background: var(--surface);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .skill-category {
+            background: var(--background);
+            padding: 2rem;
+            border-radius: 16px;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+
+        .skill-category h3 {
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.3rem;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: var(--text);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: rgba(124, 58, 237, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 6rem 2rem;
+            background: var(--background);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .project-card {
+            background: var(--surface);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(124, 58, 237, 0.2);
+            transition: all 0.4s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.2);
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-content h3 {
+            color: var(--secondary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 6rem 2rem;
+            background: var(--surface);
+            position: relative;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, 
+                rgba(124, 58, 237, 0.1),
+                rgba(100, 255, 218, 0.1));
+            pointer-events: none;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 2rem;
+            border-radius: 16px;
+            background: rgba(19, 20, 31, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(124, 58, 237, 0.2);
+        }
+
+        .contact-info {
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            margin: 1rem 0;
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--text-secondary);
+            font-size: 1.8rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Section Title */
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .name-title {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .experience-card,
+            .skill-category,
+            .project-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-content">
+            <a href="#" class="logo">AW</a>
+            <div class="nav-links">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="about">
+        <div class="hero-content">
+            <h1 class="name-title">Abdullah Wasim</h1>
+            <div class="typing-text"></div>
+            <p>Expert in LLMs, Computer Vision, and Machine Learning</p>
+            <div class="social-links">
+                <a href="https://github.com/abdullah-w-21" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/abdullahwasim" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="mailto:abdullahwasimm2112@gmail.com"><i class="fas fa-envelope"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="section-content">
+            <h2 class="section-title">Experience</h2>
+            
+            <div class="experience-card">
+                <h3>Generative AI Engineer</h3>
+                <div class="company">Nao Medical, New York, USA (Remote)</div>
+                <div class="duration">December 2024 - Present</div>
+                <ul>
+                    <li>Architected automated mail classification system using LLM agents</li>
+                    <li>Designed intelligent file management system with 96.9% accuracy</li>
+                    <li>Engineered sales agent automation system using CrewAI</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Data Scientist</h3>
+                <div class="company">RnZ Technologies, Karachi, Pakistan (Remote)</div>
+                <div class="duration">July 2022 - December 2024</div>
+                <ul>
+                    <li>Implemented geospatial monitoring solution using Python and ArcGIS</li>
+                    <li>Developed multilingual Meeting Minutes Generator with 95% accuracy</li>
+                    <li>Led automated blog generation system development</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Generative AI Engineer</h3>
+                <div class="company">CMB Solutions Inc., Indianapolis, USA (Hybrid Part-Time)</div>
+                <div class="duration">September 2023 - February 2024</div>
+                <ul>
+                    <li>Architected ChatWithSQL system using LangChain and GPT-4</li>
+                    <li>Implemented RAG-based enterprise product chatbot</li>
+                    <li>Led automated blog generation system development</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <h2 class="section-title">Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Languages</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">JavaScript</span>
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">C#</span>
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">R</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Technologies</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">FastAPI</span>
+                    <span class="skill-tag">React.js</span>
+                    <span class="skill-tag">OpenAI</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Tools & Platforms</h3>
+                <div class="skill-list">
+                    <span class="skill-tag">AWS</span>
+                    <span class="skill-tag">GCP</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">CI/CD</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <h2 class="section-title">Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>iPrepare</h3>
+                    <p>AI-powered interview preparation platform using RAG architecture with LangChain and LLM APIs. Implements automated resume analysis and contextual question generation.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>Geospatial Monitoring System</h3>
+                    <p>Sophisticated solution for processing Sentinel-2 satellite images, incorporating NDVI/LAI indices for vegetation health analysis.</p>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <div class="project-content">
+                    <h3>ChatWithSQL</h3>
+                    <p>Natural language database querying system using LangChain and GPT-4, integrated with PostgreSQL for real-time data analysis.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Contact</h2>
+            <div class="contact-info">
+                <p>I'm always interested in hearing about new opportunities and collaborations.</p>
+                <p><i class="fas fa-envelope"></i> abdullahwasimm2112@gmail.com</p>
+                <p><i class="fas fa-phone"></i> +92 335 0506080</p>
+                <div class="social-links">
+                    <a href="https://github.com/abdullah-w-21" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/abdullahwasim" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:abdullahwasimm2112@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Typing animation
+        const roles = ['Generative AI Engineer', 'Data Scientist', 'Machine Learning Expert'];
+        let roleIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function typeRole() {
+            const currentRole = roles[roleIndex];
+            const typingElement = document.querySelector('.typing-text');
+            
+            if (isDeleting) {
+                charIndex--;
+            } else {
+                charIndex++;
+            }
+
+            typingElement.textContent = currentRole.substring(0, charIndex);
+
+            let typingSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentRole.length) {
+                typingSpeed = 2000; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                roleIndex = (roleIndex + 1) % roles.length;
+            }
+
+            setTimeout(typeRole, typingSpeed);
+        }
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    if (entry.target.classList.contains('skill-tag')) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections and skill tags
+        document.querySelectorAll('section, .skill-tag').forEach((element) => {
+            observer.observe(element);
+        });
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Start typing animation when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            typeRole();
+            
+            // Add initial animation to skill tags
+            document.querySelectorAll('.skill-tag').forEach((tag, index) => {
+                tag.style.transitionDelay = `${index * 100}ms`;
+            });
+        });
+    </script>
+</body>
+</html>
