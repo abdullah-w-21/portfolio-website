@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://abdullah-wasim.vercel.app/sitemap.xml
