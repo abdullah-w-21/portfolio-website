@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPrepare: Interview Preparation with AI My Final Year Project | Abdullah Wasim</title>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "pvuocmhk5m");
+        </script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNP6N4H3F2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-HNP6N4H3F2');
+    </script>
+    
+  
+    
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Discover iPrepare - an innovative AI-powered interview preparation platform that combines RAG architecture, multimodal inputs, and personalized feedback to transform how candidates prepare for interviews.">
+    <meta name="keywords" content="iPrepare, AI Interview Preparation, Interview Practice Platform, RAG Architecture, LLM Interview Bot, Adaptive Interview Practice, Final year project, Abdullah Wasim">
+    <meta name="author" content="Abdullah Wasim">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="iPrepare: AI-Powered Interview Preparation Platform">
+    <meta property="og:description" content="Learn about iPrepare, a cutting-edge interview preparation platform that uses AI to provide personalized practice, feedback, and skill enhancement for job seekers.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://abdullah-wasim.vercel.app/blog/iprepare-interview-preparation">
+    <meta property="article:published_time" content="2025-02-02">
+    <meta property="article:author" content="Abdullah Wasim">
+    <meta property="article:tag" content="AI Interview Preparation">
+    <meta property="article:tag" content="RAG Architecture">
+    <meta property="article:tag" content="Interview Practice">
+
+    <!-- Article Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "iPrepare: Revolutionizing Interview Preparation with AI - My final year project",
+      "description": "A comprehensive look at iPrepare, an AI-powered interview preparation platform that uses advanced technologies to provide personalized interview practice and feedback.",
+      "author": {
+        "@type": "Person",
+        "name": "Abdullah Wasim",
+        "url": "https://abdullah-wasim.vercel.app",
+        "jobTitle": "Generative AI Engineer"
+      },
+      "datePublished": "2025-02-02",
+      "publisher": {
+        "@type": "Person",
+        "name": "Abdullah Wasim"
+      },
+      "inLanguage": "en-US",
+      "articleSection": "AI Development",
+      "keywords": "iPrepare, Interview Preparation, AI, RAG Architecture, LLM",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://abdullah-wasim.vercel.app/blog/iprepare-interview-preparation"
+      }
+    }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --background: #0a0b0f;
+    --surface: #13141f;
+    --primary: #7C3AED;
+    --secondary: #64ffda;
+    --text: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --accent: #ff49db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 80px; /* Added padding to account for fixed navbar */
+}
+/* Navigation */
+/* Updated Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 11, 15, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* Home Button for Mobile */
+.home-button {
+    display: none;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.blog-hero {
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(
+        45deg,
+        rgba(124, 58, 237, 0.1),
+        rgba(100, 255, 218, 0.1)
+    );
+    text-align: center;
+}
+
+.blog-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-hero p {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+.category-tab {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.category-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.category-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+}
+
+/* Blog Grid */
+.blog-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blog-card.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-category {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.blog-title {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Featured Posts */
+.featured-post {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    transition: all 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.featured-post.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.featured-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-image {
+    height: 400px;
+    border-radius: 12px;
+}
+
+/* Support Message */
+.support-message {
+    text-align: center;
+    padding: 2rem;
+    background: var(--surface);
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 16px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.support-message p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Buy Me a Coffee Button */
+.coffee-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #FFDD00;
+    color: #000000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.2);
+}
+
+.coffee-btn:hover {
+    transform: translateY(-3px);
+}
+
+.coffee-btn i {
+    font-size: 1.2rem;
+}
+
+/* Newsletter Section */
+.newsletter {
+    background: linear-gradient(
+        45deg,
+        rgba(124, 58, 237, 0.2),
+        rgba(100, 255, 218, 0.2)
+    );
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--text);
+    border-top: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.newsletter p {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.newsletter-button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    background: var(--secondary);
+    color: var(--text);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    border-color: var(--secondary);
+}
+
+.toast.error {
+    border-color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-image {
+        height: 250px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .blog-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+        /* Article-specific styles */
+        .article-content {
+            max-width: 800px;
+            margin: 2rem auto; /* Adjusted margin */
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+            padding-top: 1rem; /* Added padding */
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .article-content h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-content h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .article-content code {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .article-content pre {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .article-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px; /* Adjusted for smaller screens */
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Media Queries */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .home-button {
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-content {
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+<body>
+   <!-- Navigation -->
+   <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">AW</a>
+            <div class="nav-links">
+                <a href="/blog">Home</a>
+                <a href="/" class="portfolio-link">Portfolio</a>
+                <a href="#featured">Featured</a>
+                <a href="#projects">Project Blogs</a>
+                <a href="#ai-news">AI News</a>
+            </div>
+            <a href="/blog" class="home-button">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </nav>
+
+    <article class="article-content">
+        <header class="article-header">
+            <h1>iPrepare: Revolutionizing Interview Preparation with AI - My Final Year Project</h1>
+            <div class="article-meta">
+                <span>By Abdullah Wasim</span>
+                <span>•</span>
+                <span>February 2, 2025</span>
+                <span>•</span>
+                <span>12 min read</span>
+            </div>
+            <div class="article-tags">
+                <span class="article-tag">AI Development</span>
+                <span class="article-tag">Interview Preparation</span>
+                <span class="article-tag">RAG Architecture</span>
+                <span class="article-tag">LLM Applications</span>
+                <span class="article-tag">Educational Technology</span>
+            </div>
+        </header>
+
+        <section class="article-introduction">
+            <p>In today's competitive job market, effective interview preparation can make the difference between success and missed opportunities. iPrepare emerges as a groundbreaking solution that leverages advanced AI technologies to transform how candidates prepare for interviews. This comprehensive platform combines RAG architecture, multimodal inputs, and personalized feedback to create a dynamic, adaptive learning experience.</p>
+        </section>
+
+        <h2>The Challenge: Revolutionizing Interview Preparation</h2>
+        <p>Traditional interview preparation methods often fall short in providing personalized, effective practice experiences. iPrepare addresses these critical challenges:</p>
+
+        <ul>
+            <li>Limited access to customized practice materials</li>
+            <li>Generic feedback that doesn't address individual needs</li>
+            <li>Difficulty in identifying specific areas for improvement</li>
+            <li>Lack of structured, progressive learning paths</li>
+        </ul>
+
+        <h2>Technical Architecture and Innovation</h2>
+        <p>iPrepare's architecture represents a sophisticated integration of cutting-edge technologies:</p>
+
+        <h3>Core Components</h3>
+        <ul>
+            <li><strong>RAG (Retrieval-Augmented Generation):</strong> Enables context-aware responses and accurate information retrieval</li>
+            <li><strong>Vector Database Integration:</strong> Utilizing FAISS DB and Chroma DB for efficient knowledge storage and retrieval</li>
+            <li><strong>LLM Integration:</strong> Leveraging Groq and Google-Gen-AI for advanced natural language processing</li>
+            <li><strong>Multimodal Input Processing:</strong> Supporting both spoken and written responses for comprehensive practice</li>
+        </ul>
+
+        <h3>Technology Stack</h3>
+        <ul>
+            <li><strong>Frontend:</strong> React.js for a responsive, user-friendly interface</li>
+            <li><strong>Backend:</strong> Node.js and Python API for robust processing</li>
+            <li><strong>AI Framework:</strong> Langchain and LlamaIndex for sophisticated AI operations</li>
+            <li><strong>Data Management:</strong> MongoDB for efficient data storage and retrieval</li>
+        </ul>
+
+        <h2>Key Features and Capabilities</h2>
+        
+        <h3>Adaptive Learning System</h3>
+        <p>iPrepare's adaptive RAG system personalizes the learning experience by:</p>
+        <ul>
+            <li>Analyzing user responses and performance patterns</li>
+            <li>Adjusting question difficulty and topics dynamically</li>
+            <li>Providing targeted feedback based on individual progress</li>
+            <li>Maintaining context awareness across practice sessions</li>
+        </ul>
+
+        <h3>Interactive Learning Experience</h3>
+        <p>The platform offers:</p>
+        <ul>
+            <li>Dynamic topic selection for focused practice</li>
+            <li>Multimodal input options for comprehensive skill development</li>
+            <li>Detailed explanations for MCQ-based questions</li>
+            <li>Progress tracking and performance analytics</li>
+        </ul>
+
+        <h2>Practical Implementation and Benefits</h2>
+
+        <h3>For Candidates</h3>
+        <ul>
+            <li>Personalized practice sessions aligned with individual goals</li>
+            <li>Immediate, constructive feedback for improvement</li>
+            <li>Progress tracking and performance analytics</li>
+            <li>Flexible practice options through multiple input modes</li>
+        </ul>
+
+        <h3>Technical Advantages</h3>
+        <ul>
+            <li>Scalable architecture supporting multiple users</li>
+            <li>Efficient data processing and storage</li>
+            <li>Real-time response generation and feedback</li>
+            <li>Robust security and data protection</li>
+        </ul>
+
+        <h2>Future Development and Potential</h2>
+        <p>iPrepare's roadmap includes several exciting developments:</p>
+        <ul>
+            <li>Enhanced AI models for more nuanced feedback</li>
+            <li>Expanded industry-specific question banks</li>
+            <li>Advanced analytics for deeper insights</li>
+            <li>Integration with additional learning resources</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>iPrepare represents a significant advancement in interview preparation technology. By combining sophisticated AI capabilities with a user-centric design, it addresses the fundamental challenges of traditional interview preparation methods. The platform's ability to provide personalized, adaptive learning experiences positions it as a valuable tool for job seekers looking to enhance their interview performance.</p>
+
+        <div class="article-meta">
+            <p>About the Author: Abdullah Wasim is a Generative AI Engineer specializing in LLMs, Computer Vision, and AI application development. Connect with him on <a href="https://github.com/abdullah-w-21" target="_blank">GitHub</a> or <a href="https://www.linkedin.com/in/abdullahwasim" target="_blank">LinkedIn</a>.</p>
+        </div>
+    </article>
+<!-- Support Message -->
+<div class="support-message">
+    <p>I believe in creating a clean, ad-free experience for readers. If you've found my articles helpful or interesting, consider supporting me with a coffee. Your support helps me continue writing and sharing knowledge!</p>
+</div>
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="newsletter-content">
+        <h2>Subscribe to My Newsletter</h2>
+        <p>Get the latest articles, tutorials, and insights delivered straight to your inbox.</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email">
+            <button type="submit" class="newsletter-button">Subscribe</button>
+        </form>
+    </div>
+</section>
+ <!-- Toast Notification -->
+ <div class="toast" id="toast"></div>
+ <!-- Buy Me a Coffee Button -->
+ <a href="https://www.buymeacoffee.com/abdullahwasim" target="_blank" class="coffee-btn">
+    <i class="fas fa-coffee"></i>
+    Buy me a coffee
+</a>
+<script>
+    // Toast Notification Function
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type} show`;
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+// Newsletter Subscription
+const newsletterForm = document.querySelector('.newsletter-form');
+newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector('input');
+    const email = emailInput.value.trim();
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showToast('Please enter a valid email address', 'error');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        // Log the full response for debugging
+        console.log('Response status:', response.status);
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('Error parsing response:', parseError);
+            showToast('Server returned invalid response. Please try again later.', 'error');
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Subscription failed');
+        }
+
+        showToast('Thanks for subscribing!');
+        emailInput.value = '';
+    } catch (error) {
+        console.error('Subscription error:', error);
+        showToast(error.message || 'Something went wrong. Please try again.', 'error');
+    }
+});
+
+    // Filter Function
+    function filterPosts(category) {
+        const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+        
+        // First fade out all cards
+        blogCards.forEach(card => {
+            card.classList.add('fade-out');
+        });
+
+        // Wait for fade out animation
+        setTimeout(() => {
+            blogCards.forEach(card => {
+                const cardCategory = card.querySelector('.blog-category').textContent.toLowerCase();
+                
+                if (category === 'all') {
+                    card.style.display = card.classList.contains('featured-post') ? 'grid' : 'block';
+                    setTimeout(() => card.classList.remove('fade-out'), 50);
+                } else if (cardCategory.includes(category.replace('blogs', 'blog'))) {
+                    card.style.display = card.classList.contains('featured-post') ? 'grid' : 'block';
+                    setTimeout(() => card.classList.remove('fade-out'), 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }, 300);
+
+        // Update active states in both nav and category tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            if (tab.textContent.trim().toLowerCase() === category) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+
+    // Category Tab Functionality
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.textContent.trim().toLowerCase();
+            filterPosts(category);
+        });
+    });
+
+    // Navigation Link Functionality
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href').substring(1);
+            
+            // Smooth scroll to section
+            document.getElementById(target)?.scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // Filter posts based on nav item
+            if (target === 'featured') {
+                filterPosts('all');
+            } else if (target === 'projects') {
+                filterPosts('project blogs');
+            } else if (target === 'ai-news') {
+                filterPosts('ai news');
+            }
+        });
+    });
+
+    // Smooth Scroll Functionality
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
