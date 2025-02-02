@@ -1,6 +1,11 @@
 // blog/api/subscribe.js
-import { promises as fs } from 'fs';
-import path from 'path';
+import { MongoClient } from 'mongodb';
+
+if (!process.env.MONGODB_URI) {
+    throw new Error('Please add your MongoDB URI to environment variables');
+}
+
+const client = new MongoClient(process.env.MONGODB_URI);
 
 export default async function handler(req, res) {
     // Set CORS headers
@@ -8,12 +13,10 @@ export default async function handler(req, res) {
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    // Handle OPTIONS request
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
 
-    // Only allow POST requests
     if (req.method !== 'POST') {
         return res.status(405).json({ error: 'Method not allowed' });
     }
@@ -25,37 +28,27 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: 'Email is required' });
         }
 
-        // Validate email
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
             return res.status(400).json({ error: 'Invalid email address' });
         }
 
-        // Path to emails.json
-        const filePath = path.join(process.cwd(), 'blog', 'data', 'emails.json');
+        await client.connect();
+        const database = client.db('newsletter');
+        const collection = database.collection('subscribers');
 
-        // Read existing emails
-        let emails = [];
-        try {
-            const fileContent = await fs.readFile(filePath, 'utf8');
-            emails = JSON.parse(fileContent);
-        } catch (error) {
-            // If file doesn't exist or is invalid, start with empty array
-            console.log('Initial read error (expected if first run):', error.message);
-            emails = [];
-        }
-
-        // Check if email already exists
-        if (emails.includes(email)) {
+        const existingEmail = await collection.findOne({ email });
+        if (existingEmail) {
+            await client.close();
             return res.status(400).json({ error: 'Email already subscribed' });
         }
 
-        // Add new email
-        emails.push(email);
+        await collection.insertOne({
+            email,
+            subscribedAt: new Date()
+        });
 
-        // Save updated emails
-        await fs.writeFile(filePath, JSON.stringify(emails, null, 2));
-
+        await client.close();
         return res.status(200).json({ 
             message: 'Subscription successful',
             email: email
@@ -63,6 +56,7 @@ export default async function handler(req, res) {
 
     } catch (error) {
         console.error('Server error:', error);
+        await client.close();
         return res.status(500).json({ 
             error: 'Internal server error',
             message: error.message
