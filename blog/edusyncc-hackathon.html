@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduSyncc: Building an AI-Powered Education Tool at My First International Hackathon | Abdullah Wasim</title>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "pvuocmhk5m");
+        </script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNP6N4H3F2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-HNP6N4H3F2');
+    </script>
+    
+  
+    
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Journey through my first international hackathon experience at LabLab.ai, where I developed EduSyncc - an innovative AI-powered offline learning content optimizer that revolutionizes educational content delivery.">
+    <meta name="keywords" content="EduSyncc, LabLab.ai Hackathon, AI in Education, Offline Learning, Content Optimization, Educational Technology, Abdullah Wasim">
+    <meta name="author" content="Abdullah Wasim">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="EduSyncc: From Hackathon Idea to Educational Innovation">
+    <meta property="og:description" content="Discover how EduSyncc was built during the LabLab.ai AI for Connectivity Hackathon, combining AI with smart network management to optimize offline educational content delivery.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://abdullah-wasim.vercel.app/blog/edusyncc-hackathon.html">
+    <meta property="article:published_time" content="2025-02-02">
+    <meta property="article:author" content="Abdullah Wasim">
+    <meta property="article:tag" content="Educational Technology">
+    <meta property="article:tag" content="AI Development">
+    <meta property="article:tag" content="Hackathon">
+
+    <!-- Article Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "TechArticle",
+      "headline": "EduSyncc: Building an AI-Powered Education Tool at My First International Hackathon",
+      "description": "A personal journey through developing EduSyncc at the LabLab.ai AI for Connectivity Hackathon, featuring technical insights and implementation details.",
+      "author": {
+        "@type": "Person",
+        "name": "Abdullah Wasim",
+        "url": "https://abdullah-wasim.vercel.app",
+        "jobTitle": "Generative AI Engineer"
+      },
+      "datePublished": "2025-02-02",
+      "publisher": {
+        "@type": "Person",
+        "name": "Abdullah Wasim"
+      },
+      "inLanguage": "en-US",
+      "articleSection": "AI Development",
+      "keywords": "EduSyncc, Educational Technology, AI Development, LabLab.ai Hackathon",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://abdullah-wasim.vercel.app/blog/edusyncc-hackathon.html"
+      }
+    }
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --background: #0a0b0f;
+    --surface: #13141f;
+    --primary: #7C3AED;
+    --secondary: #64ffda;
+    --text: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --accent: #ff49db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 80px; /* Added padding to account for fixed navbar */
+}
+/* Navigation */
+/* Updated Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 11, 15, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* Home Button for Mobile */
+.home-button {
+    display: none;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.blog-hero {
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(
+        45deg,
+        rgba(124, 58, 237, 0.1),
+        rgba(100, 255, 218, 0.1)
+    );
+    text-align: center;
+}
+
+.blog-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-hero p {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+.category-tab {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.category-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.category-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+}
+
+/* Blog Grid */
+.blog-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blog-card.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-category {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.blog-title {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Featured Posts */
+.featured-post {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    transition: all 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.featured-post.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.featured-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-image {
+    height: 400px;
+    border-radius: 12px;
+}
+
+/* Support Message */
+.support-message {
+    text-align: center;
+    padding: 2rem;
+    background: var(--surface);
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 16px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.support-message p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Buy Me a Coffee Button */
+.coffee-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #FFDD00;
+    color: #000000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.2);
+}
+
+.coffee-btn:hover {
+    transform: translateY(-3px);
+}
+
+.coffee-btn i {
+    font-size: 1.2rem;
+}
+
+/* Newsletter Section */
+.newsletter {
+    background: linear-gradient(
+        45deg,
+        rgba(124, 58, 237, 0.2),
+        rgba(100, 255, 218, 0.2)
+    );
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--text);
+    border-top: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.newsletter p {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.newsletter-button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    background: var(--secondary);
+    color: var(--text);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    border-color: var(--secondary);
+}
+
+.toast.error {
+    border-color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-image {
+        height: 250px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .blog-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+        /* Article-specific styles */
+        .article-content {
+            max-width: 800px;
+            margin: 2rem auto; /* Adjusted margin */
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+            padding-top: 1rem; /* Added padding */
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .article-content h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-content h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .article-content code {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .article-content pre {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .article-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px; /* Adjusted for smaller screens */
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Media Queries */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .home-button {
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-content {
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+<body>
+   <!-- Navigation -->
+   <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">AW</a>
+            <div class="nav-links">
+                <a href="/blog">Home</a>
+                <a href="/" class="portfolio-link">Portfolio</a>
+                <a href="#featured">Featured</a>
+                <a href="#projects">Project Blogs</a>
+                <a href="#ai-news">AI News</a>
+            </div>
+            <a href="/blog" class="home-button">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </nav>
+
+    <article class="article-content">
+        <header class="article-header">
+            <h1>EduSyncc: Building an AI-Powered Education Tool at My First International Hackathon</h1>
+            <div class="article-meta">
+                <span>By Abdullah Wasim</span>
+                <span>•</span>
+                <span>February 2, 2025</span>
+                <span>•</span>
+                <span>10 min read</span>
+            </div>
+            <div class="article-tags">
+                <span class="article-tag">Educational Technology</span>
+                <span class="article-tag">AI Development</span>
+                <span class="article-tag">Hackathon</span>
+                <span class="article-tag">Content Optimization</span>
+                <span class="article-tag">Network Management</span>
+            </div>
+        </header>
+
+        <section class="article-introduction">
+            <p>Participating in my first international hackathon with LabLab.ai was both exciting and challenging. The AI for Connectivity Hackathon presented an opportunity to address a critical challenge in education: optimizing offline learning content delivery. This experience led to the creation of EduSyncc, an intelligent educational content management system that combines AI-powered analysis with smart network management to revolutionize how educational content is delivered and managed.</p>
+        </section>
+
+        <h2>The Journey Begins: My First International Hackathon</h2>
+        <p>When I decided to participate in the LabLab.ai AI for Connectivity Hackathon, I knew I wanted to create something that would make a real difference. The challenge of optimizing connectivity in education resonated with me, particularly given the global shift towards digital learning and the persistent connectivity challenges many students face. This was my first international hackathon, and the experience of competing on a global stage was both thrilling and enlightening.</p>
+
+        <h2>The Problem: Bridging the Educational Digital Divide</h2>
+        <p>During the hackathon, we identified several critical challenges in educational content delivery:</p>
+        <ul>
+            <li>Inconsistent internet connectivity in many educational settings</li>
+            <li>Difficulty in managing and optimizing educational content for offline access</li>
+            <li>Lack of intelligent systems for curriculum alignment and content prioritization</li>
+            <li>Network resource wastage during content downloads</li>
+        </ul>
+
+        <h2>Technical Innovation: The EduSyncc Solution</h2>
+        
+        <h3>Core Components</h3>
+        <p>EduSyncc's architecture combines several innovative features:</p>
+        <ul>
+            <li><strong>AI-Powered Content Analysis:</strong> Utilizing Groq's LLaMA 3 model for intelligent content processing</li>
+            <li><strong>Smart Network Management:</strong> Predictive analytics for optimal download scheduling</li>
+            <li><strong>Curriculum Alignment:</strong> Automated learning objective extraction and matching</li>
+            <li><strong>Resource Optimization:</strong> Intelligent scheduling based on network conditions</li>
+        </ul>
+
+        <h3>Technical Implementation</h3>
+        <p>The development process involved several key technical decisions:</p>
+        <ul>
+            <li><strong>Frontend:</strong> Streamlit for rapid development and user-friendly interface</li>
+            <li><strong>Backend:</strong> Python with SQLite for efficient data management</li>
+            <li><strong>AI Integration:</strong> Groq API for content analysis</li>
+            <li><strong>Network Analysis:</strong> Custom-built predictive models using Random Forest</li>
+        </ul>
+
+        <h2>Key Features and Innovations</h2>
+
+        <h3>Curriculum Management</h3>
+        <p>The system provides comprehensive curriculum management capabilities:</p>
+        <ul>
+            <li>Structured content organization by grade and subject</li>
+            <li>Automated learning objective extraction</li>
+            <li>Prerequisites tracking and management</li>
+            <li>Real-time curriculum alignment analysis</li>
+        </ul>
+
+        <h3>Intelligent Network Optimization</h3>
+        <p>One of EduSyncc's standout features is its smart network management:</p>
+        <ul>
+            <li>Real-time network performance monitoring</li>
+            <li>Predictive download scheduling</li>
+            <li>Peak hour optimization</li>
+            <li>Automatic retry mechanisms</li>
+        </ul>
+
+        <h2>Development Challenges and Solutions</h2>
+        <p>The hackathon presented several unique challenges:</p>
+        <ul>
+            <li><strong>Time Constraints:</strong> Developing a complex system within the hackathon timeframe</li>
+            <li><strong>Integration Complexity:</strong> Combining multiple technologies seamlessly</li>
+            <li><strong>Performance Optimization:</strong> Ensuring efficient operation with limited resources</li>
+            <li><strong>User Experience:</strong> Creating an intuitive interface for educators</li>
+        </ul>
+
+        <h3>Overcoming Obstacles</h3>
+        <p>We addressed these challenges through:</p>
+        <ul>
+            <li>Efficient project planning and prioritization</li>
+            <li>Modular architecture for easier integration</li>
+            <li>Continuous testing and optimization</li>
+            <li>User-centered design principles</li>
+        </ul>
+
+        <h2>Impact and Future Potential</h2>
+        <p>EduSyncc was designed to make a real difference in educational content delivery:</p>
+        <ul>
+            <li>Improved access to educational resources in areas with limited connectivity</li>
+            <li>Enhanced content organization and delivery efficiency</li>
+            <li>Better alignment between content and curriculum objectives</li>
+            <li>Reduced network resource wastage</li>
+        </ul>
+
+        <h3>Future Development Plans</h3>
+        <p>Looking ahead, several enhancements are planned:</p>
+        <ul>
+            <li>Enhanced AI models for better content analysis</li>
+            <li>Mobile application development</li>
+            <li>Expanded file format support</li>
+            <li>Advanced analytics capabilities</li>
+        </ul>
+
+        <h2>Lessons from My First International Hackathon</h2>
+        <p>Participating in the LabLab.ai hackathon taught me valuable lessons about:</p>
+        <ul>
+            <li>Working under pressure in an international competition</li>
+            <li>Rapid prototyping and development</li>
+            <li>Balancing innovation with practicality</li>
+            <li>The importance of clear problem definition</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>Creating EduSyncc during my first international hackathon was an incredible learning experience. The project not only addresses critical challenges in educational content delivery but also demonstrates the potential of AI in solving real-world connectivity issues. The support and platform provided by LabLab.ai were instrumental in bringing this idea to life, and I'm excited to continue developing and improving EduSyncc to make quality education more accessible to all.</p>
+
+        <div class="article-meta">
+            <p>About the Author: Abdullah Wasim is a Generative AI Engineer specializing in LLMs, Computer Vision, and AI application development. Connect with him on <a href="https://github.com/abdullah-w-21" target="_blank">GitHub</a> or <a href="https://www.linkedin.com/in/abdullahwasim" target="_blank">LinkedIn</a>.</p>
+        </div>
+    </article>
+<!-- Support Message -->
+<div class="support-message">
+    <p>I believe in creating a clean, ad-free experience for readers. If you've found my articles helpful or interesting, consider supporting me with a coffee. Your support helps me continue writing and sharing knowledge!</p>
+</div>
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="newsletter-content">
+        <h2>Subscribe to My Newsletter</h2>
+        <p>Get the latest articles, tutorials, and insights delivered straight to your inbox.</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email">
+            <button type="submit" class="newsletter-button">Subscribe</button>
+        </form>
+    </div>
+</section>
+ <!-- Toast Notification -->
+ <div class="toast" id="toast"></div>
+ <!-- Buy Me a Coffee Button -->
+ <a href="https://www.buymeacoffee.com/abdullahwasim" target="_blank" class="coffee-btn">
+    <i class="fas fa-coffee"></i>
+    Buy me a coffee
+</a>
+<script>
+    // Toast Notification Function
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type} show`;
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+// Newsletter Subscription
+const newsletterForm = document.querySelector('.newsletter-form');
+newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector('input');
+    const email = emailInput.value.trim();
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showToast('Please enter a valid email address', 'error');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        // Log the full response for debugging
+        console.log('Response status:', response.status);
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('Error parsing response:', parseError);
+            showToast('Server returned invalid response. Please try again later.', 'error');
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Subscription failed');
+        }
+
+        showToast('Thanks for subscribing!');
+        emailInput.value = '';
+    } catch (error) {
+        console.error('Subscription error:', error);
+        showToast(error.message || 'Something went wrong. Please try again.', 'error');
+    }
+});
+
+    // Filter Function
+    function filterPosts(category) {
+        const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+        
+        // First fade out all cards
+        blogCards.forEach(card => {
+            card.classList.add('fade-out');
+        });
+
+        // Wait for fade out animation
+        setTimeout(() => {
+            blogCards.forEach(card => {
+                const cardCategory = card.querySelector('.blog-category').textContent.toLowerCase();
+                
+                if (category === 'all') {
+                    card.style.display = card.classList.contains('featured-post') ? 'grid' : 'block';
+                    setTimeout(() => card.classList.remove('fade-out'), 50);
+                } else if (cardCategory.includes(category.replace('blogs', 'blog'))) {
+                    card.style.display = card.classList.contains('featured-post') ? 'grid' : 'block';
+                    setTimeout(() => card.classList.remove('fade-out'), 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }, 300);
+
+        // Update active states in both nav and category tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            if (tab.textContent.trim().toLowerCase() === category) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+
+    // Category Tab Functionality
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.textContent.trim().toLowerCase();
+            filterPosts(category);
+        });
+    });
+
+    // Navigation Link Functionality
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href').substring(1);
+            
+            // Smooth scroll to section
+            document.getElementById(target)?.scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // Filter posts based on nav item
+            if (target === 'featured') {
+                filterPosts('all');
+            } else if (target === 'projects') {
+                filterPosts('project blogs');
+            } else if (target === 'ai-news') {
+                filterPosts('ai news');
+            }
+        });
+    });
+
+    // Smooth Scroll Functionality
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
