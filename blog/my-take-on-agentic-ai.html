@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agentic AI: A Year of Experience with Autonomous AI Systems | Abdullah Wasim</title>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "pvuocmhk5m");
+        </script>
+        <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HNP6N4H3F2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+    
+      gtag('config', 'G-HNP6N4H3F2');
+    </script>
+    
+  
+    
+
+   <!-- Meta Tags -->
+   <meta name="description" content="Explore Agentic AI's evolution, capabilities, and real-world applications. Learn about leading frameworks like CrewAI, AutoGen, and LangChain Agents from an AI engineer's perspective.">
+   <meta name="keywords" content="Agentic AI, AI Agents, CrewAI, AutoGen, LangChain Agents, Multi-Agent Systems, AI Development, Abdullah Wasim">
+   <meta name="author" content="Abdullah Wasim">
+   <meta name="robots" content="index, follow">
+   <meta name="language" content="English">
+
+   <!-- Open Graph Meta Tags -->
+   <meta property="og:title" content="Agentic AI: A Year of Experience with Autonomous AI Systems">
+   <meta property="og:description" content="Discover how Agentic AI is transforming automation through multi-agent systems. An in-depth look at frameworks, applications, and future potential from an AI engineer's perspective.">
+   <meta property="og:type" content="article">
+   <meta property="og:url" content="https://abdullah-wasim.vercel.app/blog/my-take-on-agentic-ai.html">
+   <meta property="article:published_time" content="2025-02-02">
+   <meta property="article:author" content="Abdullah Wasim">
+   <meta property="article:tag" content="Agentic AI">
+   <meta property="article:tag" content="AI Development">
+
+   <!-- Article Structured Data -->
+   <script type="application/ld+json">
+   {
+     "@context": "https://schema.org",
+     "@type": "TechArticle",
+     "headline": "Agentic AI: A Year of Experience with Autonomous AI Systems",
+     "description": "A comprehensive exploration of Agentic AI, including frameworks, applications, and personal experiences with autonomous AI systems.",
+     "author": {
+       "@type": "Person",
+       "name": "Abdullah Wasim",
+       "url": "https://abdullah-wasim.vercel.app",
+       "jobTitle": "Generative AI Engineer"
+     },
+     "datePublished": "2025-02-02",
+     "publisher": {
+       "@type": "Person",
+       "name": "Abdullah Wasim"
+     },
+     "inLanguage": "en-US",
+     "articleSection": "AI Development",
+     "keywords": "Agentic AI, Multi-Agent Systems, CrewAI, AutoGen",
+     "mainEntityOfPage": {
+       "@type": "WebPage",
+       "@id": "https://abdullah-wasim.vercel.app/blog/my-take-on-agentic-ai.html"
+     }
+   }
+   </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --background: #0a0b0f;
+    --surface: #13141f;
+    --primary: #7C3AED;
+    --secondary: #64ffda;
+    --text: #e2e8f0;
+    --text-secondary: #94a3b8;
+    --accent: #ff49db;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', sans-serif;
+}
+
+body {
+    background-color: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    padding-top: 80px; /* Added padding to account for fixed navbar */
+}
+/* Navigation */
+/* Updated Navigation Styles */
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(10, 11, 15, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--primary);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+/* Home Button for Mobile */
+.home-button {
+    display: none;
+    text-decoration: none;
+    color: var(--text);
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.home-button:hover {
+    background: var(--primary);
+    color: white;
+}
+
+
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+        }
+
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+.nav-links a.active {
+    color: var(--primary);
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
+/* Hero Section */
+.blog-hero {
+    padding: 8rem 2rem 4rem;
+    background: linear-gradient(
+        45deg,
+        rgba(124, 58, 237, 0.1),
+        rgba(100, 255, 218, 0.1)
+    );
+    text-align: center;
+}
+
+.blog-hero h1 {
+    font-size: 3.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.blog-hero p {
+    color: var(--text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.2rem;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0;
+    padding: 0 2rem;
+}
+
+.category-tab {
+    padding: 0.8rem 1.5rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background: transparent;
+    color: var(--text-secondary);
+}
+
+.category-tab.active {
+    background: var(--primary);
+    color: white;
+    border-color: var(--primary);
+}
+
+.category-tab:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.1);
+}
+
+/* Blog Grid */
+.blog-grid {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.blog-card {
+    background: var(--surface);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.5s ease;
+    border: 1px solid rgba(124, 58, 237, 0.1);
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.blog-card.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.1);
+}
+
+.blog-image {
+    width: 100%;
+    height: 200px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-category {
+    font-size: 0.9rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.blog-title {
+    font-size: 1.4rem;
+    color: var(--text);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.blog-excerpt {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.blog-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+/* Featured Posts */
+.featured-post {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: var(--surface);
+    padding: 2rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+    transition: all 0.5s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.featured-post.fade-out {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.featured-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.featured-image {
+    height: 400px;
+    border-radius: 12px;
+}
+
+/* Support Message */
+.support-message {
+    text-align: center;
+    padding: 2rem;
+    background: var(--surface);
+    margin: 2rem auto;
+    max-width: 800px;
+    border-radius: 16px;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.support-message p {
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+/* Buy Me a Coffee Button */
+.coffee-btn {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: #FFDD00;
+    color: #000000;
+    padding: 0.8rem 1.5rem;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(255, 221, 0, 0.2);
+}
+
+.coffee-btn:hover {
+    transform: translateY(-3px);
+}
+
+.coffee-btn i {
+    font-size: 1.2rem;
+}
+
+/* Newsletter Section */
+.newsletter {
+    background: linear-gradient(
+        45deg,
+        rgba(124, 58, 237, 0.2),
+        rgba(100, 255, 218, 0.2)
+    );
+    padding: 4rem 2rem;
+    margin-top: 4rem;
+    text-align: center;
+    color: var(--text);
+    border-top: 1px solid rgba(124, 58, 237, 0.1);
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.newsletter h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.newsletter p {
+    margin-bottom: 2rem;
+    color: var(--text-secondary);
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 1rem;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+    border-radius: 8px;
+    font-size: 1rem;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.newsletter-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.newsletter-button {
+    padding: 1rem 2rem;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.newsletter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);
+    background: var(--secondary);
+    color: var(--text);
+}
+
+/* Toast Notification */
+.toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: var(--surface);
+    color: var(--text);
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    border: 1px solid rgba(124, 58, 237, 0.2);
+}
+
+.toast.show {
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast.success {
+    border-color: var(--secondary);
+}
+
+.toast.error {
+    border-color: #ef4444;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-image {
+        height: 250px;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .blog-hero h1 {
+        font-size: 2.5rem;
+    }
+}
+        /* Article-specific styles */
+        .article-content {
+            max-width: 800px;
+            margin: 2rem auto; /* Adjusted margin */
+            padding: 2rem;
+        }
+
+        .article-header {
+            margin-bottom: 2rem;
+            padding-top: 1rem; /* Added padding */
+        }
+
+        .article-meta {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin: 1rem 0;
+        }
+
+        .article-content h2 {
+            color: var(--primary);
+            margin: 2rem 0 1rem;
+            font-size: 1.8rem;
+        }
+
+        .article-content h3 {
+            color: var(--secondary);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.4rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .article-content code {
+            background: rgba(124, 58, 237, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+
+        .article-content pre {
+            background: var(--surface);
+            padding: 1rem;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .article-content ul {
+            margin: 1rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .article-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+
+        .article-tags {
+            display: flex;
+            gap: 0.5rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .article-tag {
+            background: rgba(124, 58, 237, 0.1);
+            color: var(--text);
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding-top: 60px; /* Adjusted for smaller screens */
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .article-content {
+                padding: 1rem;
+            }
+        }
+
+        /* Media Queries */
+@media (max-width: 768px) {
+    nav {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .home-button {
+        display: block;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .nav-content {
+        justify-content: space-between;
+        align-items: center;
+    }
+}
+    </style>
+</head>
+<body>
+   <!-- Navigation -->
+   <nav>
+        <div class="nav-content">
+            <a href="/" class="logo">AW</a>
+            <div class="nav-links">
+                <a href="/blog">Home</a>
+                <a href="/" class="portfolio-link">Portfolio</a>
+                <a href="#featured">Featured</a>
+                <a href="#projects">Project Blogs</a>
+                <a href="#ai-news">AI News</a>
+            </div>
+            <a href="/blog" class="home-button">
+                <i class="fas fa-home"></i> Home
+            </a>
+        </div>
+    </nav>
+
+    <article class="article-content">
+        <header class="article-header">
+            <h1>Agentic AI: A Year of Experience with Autonomous AI Systems</h1>
+            <div class="article-meta">
+                <span>By Abdullah Wasim</span>
+                <span>•</span>
+                <span>February 2, 2025</span>
+                <span>•</span>
+                <span>15 min read</span>
+            </div>
+            <div class="article-tags">
+                <span class="article-tag">Agentic AI</span>
+                <span class="article-tag">AI Development</span>
+                <span class="article-tag">Multi-Agent Systems</span>
+                <span class="article-tag">Automation</span>
+                <span class="article-tag">AI Frameworks</span>
+            </div>
+        </header>
+
+        <section class="article-introduction">
+            <p>Over the past year, I've been deeply involved with Agentic AI development, witnessing its evolution from an emerging concept to a transformative force in artificial intelligence. As this technology now gains widespread attention, I want to share insights from my experience and explore why Agentic AI represents a significant leap forward in autonomous systems.</p>
+        </section>
+
+        <h2>What is Agentic AI?</h2>
+        <p>Agentic AI represents a paradigm shift in artificial intelligence where AI systems operate as autonomous agents capable of understanding objectives, making decisions, and taking actions to achieve specific goals. Unlike traditional AI models that respond to direct prompts, Agentic AI systems can:</p>
+
+        <ul>
+            <li>Operate autonomously with defined objectives</li>
+            <li>Collaborate in multi-agent systems</li>
+            <li>Adapt strategies based on feedback</li>
+            <li>Handle complex, multi-step tasks</li>
+            <li>Maintain context and state across operations</li>
+        </ul>
+
+        <h2>Leading Agentic AI Frameworks</h2>
+        <p>The ecosystem of Agentic AI frameworks has grown significantly, each offering unique approaches to agent-based AI:</p>
+
+        <h3>1. CrewAI</h3>
+        <p>From my extensive experience with CrewAI, it excels in:</p>
+        <ul>
+            <li>Orchestrating multiple AI agents in collaborative tasks</li>
+            <li>Role-based agent specialization</li>
+            <li>Sequential and parallel task execution</li>
+            <li>Dynamic task delegation and management</li>
+        </ul>
+
+        <h3>2. AutoGen</h3>
+        <p>Microsoft's contribution to Agentic AI focuses on:</p>
+        <ul>
+            <li>Flexible agent communication patterns</li>
+            <li>Code generation and execution</li>
+            <li>Multi-agent conversation orchestration</li>
+            <li>Enhanced problem-solving capabilities</li>
+        </ul>
+
+        <h3>3. LangChain Agents</h3>
+        <p>A pioneering framework offering:</p>
+        <ul>
+            <li>Tool-using agents</li>
+            <li>ReAct (Reasoning and Acting) patterns</li>
+            <li>Chain-of-thought reasoning</li>
+            <li>Integration with various tools and APIs</li>
+        </ul>
+
+        <h3>4. AI Agent Flow</h3>
+        <p>A newer framework emphasizing:</p>
+        <ul>
+            <li>Visual agent workflow design</li>
+            <li>Intuitive agent behavior modeling</li>
+            <li>Rapid prototyping capabilities</li>
+            <li>Built-in monitoring and debugging</li>
+        </ul>
+
+        <h2>Real-World Applications</h2>
+        <p>In my year of working with Agentic AI, I've seen successful implementations across various domains:</p>
+
+        <h3>Business Process Automation</h3>
+        <ul>
+            <li>Customer service automation with multiple specialized agents</li>
+            <li>Document processing and analysis systems</li>
+            <li>Automated research and report generation</li>
+            <li>Sales and marketing automation</li>
+        </ul>
+
+        <h3>Software Development</h3>
+        <ul>
+            <li>Code generation and review</li>
+            <li>Automated testing and debugging</li>
+            <li>Documentation generation</li>
+            <li>Development workflow optimization</li>
+        </ul>
+
+        <h2>Technical Implementation Insights</h2>
+        <p>Based on my experience, successful Agentic AI implementation requires attention to several key areas:</p>
+
+        <h3>Agent Design Principles</h3>
+        <ul>
+            <li>Clear role and responsibility definition</li>
+            <li>Robust communication protocols</li>
+            <li>Error handling and recovery mechanisms</li>
+            <li>Performance monitoring and optimization</li>
+        </ul>
+
+        <h3>System Architecture Considerations</h3>
+        <ul>
+            <li>Scalable agent management</li>
+            <li>Efficient resource utilization</li>
+            <li>Security and access control</li>
+            <li>State management and persistence</li>
+        </ul>
+
+        <h2>Challenges and Solutions</h2>
+        <p>Working with Agentic AI presents unique challenges:</p>
+
+        <h3>Common Challenges</h3>
+        <ul>
+            <li>Agent coordination in complex scenarios</li>
+            <li>Maintaining context across long interactions</li>
+            <li>Handling unexpected situations</li>
+            <li>Resource optimization in multi-agent systems</li>
+        </ul>
+
+        <h3>Effective Solutions</h3>
+        <ul>
+            <li>Implementing robust error handling</li>
+            <li>Using hierarchical agent structures</li>
+            <li>Developing fallback mechanisms</li>
+            <li>Regular performance monitoring and optimization</li>
+        </ul>
+
+        <h2>Future Trends and Potential</h2>
+        <p>The future of Agentic AI looks promising with several emerging trends:</p>
+
+        <h3>Emerging Developments</h3>
+        <ul>
+            <li>Enhanced agent autonomy and decision-making</li>
+            <li>Improved inter-agent collaboration</li>
+            <li>Integration with specialized AI models</li>
+            <li>Advanced learning and adaptation capabilities</li>
+        </ul>
+
+        <h3>Potential Applications</h3>
+        <ul>
+            <li>Autonomous system management</li>
+            <li>Complex problem-solving systems</li>
+            <li>Intelligent personal assistants</li>
+            <li>Educational and training systems</li>
+        </ul>
+
+        <h2>Conclusion</h2>
+        <p>After a year of working with Agentic AI, I've seen its transformation from an innovative concept to a practical tool for solving complex problems. As frameworks like CrewAI continue to evolve and new solutions emerge, the potential for Agentic AI to revolutionize automation and artificial intelligence grows exponentially. The key to success lies in understanding both the capabilities and limitations of these systems while staying current with rapid developments in the field.</p>
+
+        <div class="article-meta">
+            <p>About the Author: Abdullah Wasim is a Generative AI Engineer specializing in LLMs, Computer Vision, and AI application development. Connect with him on <a href="https://github.com/abdullah-w-21" target="_blank">GitHub</a> or <a href="https://www.linkedin.com/in/abdullahwasim" target="_blank">LinkedIn</a>.</p>
+        </div>
+    </article>
+<!-- Support Message -->
+<div class="support-message">
+    <p>I believe in creating a clean, ad-free experience for readers. If you've found my articles helpful or interesting, consider supporting me with a coffee. Your support helps me continue writing and sharing knowledge!</p>
+</div>
+<!-- Newsletter Section -->
+<section class="newsletter">
+    <div class="newsletter-content">
+        <h2>Subscribe to My Newsletter</h2>
+        <p>Get the latest articles, tutorials, and insights delivered straight to your inbox.</p>
+        <form class="newsletter-form">
+            <input type="email" class="newsletter-input" placeholder="Enter your email">
+            <button type="submit" class="newsletter-button">Subscribe</button>
+        </form>
+    </div>
+</section>
+ <!-- Toast Notification -->
+ <div class="toast" id="toast"></div>
+ <!-- Buy Me a Coffee Button -->
+ <a href="https://www.buymeacoffee.com/abdullahwasim" target="_blank" class="coffee-btn">
+    <i class="fas fa-coffee"></i>
+    Buy me a coffee
+</a>
+<script>
+    // Toast Notification Function
+    function showToast(message, type = 'success') {
+        const toast = document.getElementById('toast');
+        toast.textContent = message;
+        toast.className = `toast ${type} show`;
+        
+        setTimeout(() => {
+            toast.classList.remove('show');
+        }, 3000);
+    }
+// Newsletter Subscription
+const newsletterForm = document.querySelector('.newsletter-form');
+newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector('input');
+    const email = emailInput.value.trim();
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showToast('Please enter a valid email address', 'error');
+        return;
+    }
+
+    try {
+        const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ email })
+        });
+
+        // Log the full response for debugging
+        console.log('Response status:', response.status);
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('Error parsing response:', parseError);
+            showToast('Server returned invalid response. Please try again later.', 'error');
+            return;
+        }
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Subscription failed');
+        }
+
+        showToast('Thanks for subscribing!');
+        emailInput.value = '';
+    } catch (error) {
+        console.error('Subscription error:', error);
+        showToast(error.message || 'Something went wrong. Please try again.', 'error');
+    }
+});
+
+    // Filter Function
+    function filterPosts(category) {
+        const blogCards = document.querySelectorAll('.blog-card, .featured-post');
+        
+        // First fade out all cards
+        blogCards.forEach(card => {
+            card.classList.add('fade-out');
+        });
+
+        // Wait for fade out animation
+        setTimeout(() => {
+            blogCards.forEach(card => {
+                const cardCategory = card.querySelector('.blog-category').textContent.toLowerCase();
+                
+                if (category === 'all') {
+                    card.style.display = card.classList.contains('featured-post') ? 'grid' : 'block';
+                    setTimeout(() => card.classList.remove('fade-out'), 50);
+                } else if (cardCategory.includes(category.replace('blogs', 'blog'))) {
+                    card.style.display = card.classList.contains('featured-post') ? 'grid' : 'block';
+                    setTimeout(() => card.classList.remove('fade-out'), 50);
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }, 300);
+
+        // Update active states in both nav and category tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            if (tab.textContent.trim().toLowerCase() === category) {
+                tab.classList.add('active');
+            } else {
+                tab.classList.remove('active');
+            }
+        });
+    }
+
+    // Category Tab Functionality
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            const category = tab.textContent.trim().toLowerCase();
+            filterPosts(category);
+        });
+    });
+
+    // Navigation Link Functionality
+    document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const target = link.getAttribute('href').substring(1);
+            
+            // Smooth scroll to section
+            document.getElementById(target)?.scrollIntoView({
+                behavior: 'smooth'
+            });
+
+            // Filter posts based on nav item
+            if (target === 'featured') {
+                filterPosts('all');
+            } else if (target === 'projects') {
+                filterPosts('project blogs');
+            } else if (target === 'ai-news') {
+                filterPosts('ai news');
+            }
+        });
+    });
+
+    // Smooth Scroll Functionality
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+</script>
+</body>
+</html>
