@@ -2,19 +2,13 @@
 import { promises as fs } from 'fs';
 import path from 'path';
 
-export const config = {
-  api: {
-    bodyParser: true,
-  },
-};
-
 export default async function handler(req, res) {
     // Set CORS headers
     res.setHeader('Access-Control-Allow-Origin', '*');
     res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-    // Handle OPTIONS request for CORS
+    // Handle OPTIONS request
     if (req.method === 'OPTIONS') {
         return res.status(200).end();
     }
@@ -37,8 +31,8 @@ export default async function handler(req, res) {
             return res.status(400).json({ error: 'Invalid email address' });
         }
 
-        // Path to emails.json in /tmp for Vercel
-        const filePath = path.join('/tmp', 'emails.json');
+        // Path to emails.json
+        const filePath = path.join(process.cwd(), 'blog', 'data', 'emails.json');
 
         // Read existing emails
         let emails = [];
