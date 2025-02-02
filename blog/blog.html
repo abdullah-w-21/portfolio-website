@@ -730,7 +730,7 @@ newsletterForm.addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('/api/subscribe', {
+        const response = await fetch('blog/api/subscribe', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
