@@ -715,12 +715,12 @@
             }, 3000);
         }
 
-        // Newsletter Subscription
+       // Newsletter Subscription
 const newsletterForm = document.querySelector('.newsletter-form');
 newsletterForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const emailInput = newsletterForm.querySelector('input');
-    const email = emailInput.value;
+    const email = emailInput.value.trim();
     
     // Basic email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -730,15 +730,28 @@ newsletterForm.addEventListener('submit', async (e) => {
     }
 
     try {
-        const response = await fetch('blog/api/subscribe', {
+        const response = await fetch('/api/subscribe', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Accept': 'application/json'
             },
             body: JSON.stringify({ email })
         });
 
-        const data = await response.json();
+        // Log the full response for debugging
+        console.log('Response status:', response.status);
+        const responseText = await response.text();
+        console.log('Response text:', responseText);
+
+        let data;
+        try {
+            data = JSON.parse(responseText);
+        } catch (parseError) {
+            console.error('Error parsing response:', parseError);
+            showToast('Server returned invalid response. Please try again later.', 'error');
+            return;
+        }
 
         if (!response.ok) {
             throw new Error(data.error || 'Subscription failed');
@@ -747,11 +760,10 @@ newsletterForm.addEventListener('submit', async (e) => {
         showToast('Thanks for subscribing!');
         emailInput.value = '';
     } catch (error) {
-        console.error('Error:', error);
+        console.error('Subscription error:', error);
         showToast(error.message || 'Something went wrong. Please try again.', 'error');
     }
 });
-
         // Filter Function
         function filterPosts(category) {
             const blogCards = document.querySelectorAll('.blog-card, .featured-post');
