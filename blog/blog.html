@@ -544,29 +544,142 @@
         .toast.error {
             border-color: #ef4444;
         }
+/* Mobile Menu Button */
+.mobile-menu-btn {
+    display: none;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+    z-index: 1001;
+    margin-left: auto;
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .featured-post {
-                grid-template-columns: 1fr;
-            }
+/* Mobile Menu */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 80%;
+    max-width: 300px;
+    height: 100vh;
+    background: var(--surface);
+    padding: 2rem;
+    z-index: 1002;
+    transition: right 0.3s ease;
+    border-left: 1px solid rgba(124, 58, 237, 0.2);
+}
 
-            .featured-image {
-                height: 250px;
-            }
+.mobile-menu.active {
+    right: 0;
+}
 
-            .nav-links {
-                display: none;
-            }
+.mobile-menu a {
+    display: block;
+    padding: 1rem 0;
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.2rem;
+    border-bottom: 1px solid rgba(124, 58, 237, 0.1);
+}
 
-            .newsletter-form {
-                flex-direction: column;
-            }
+.mobile-menu a:last-child {
+    border-bottom: none;
+}
 
-            .blog-hero h1 {
-                font-size: 2.5rem;
-            }
-        }
+.mobile-menu-close {
+    text-align: right;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+    margin-bottom: 1rem;
+}
+
+/* Fix horizontal scrolling */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+/* Update Responsive Design */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .nav-content {
+        justify-content: space-between;
+    }
+
+    .featured-post {
+        grid-template-columns: 1fr;
+    }
+
+    .featured-image {
+        height: 250px;
+    }
+
+    .newsletter-form {
+        flex-direction: column;
+    }
+
+    .blog-hero h1 {
+        font-size: 2.5rem;
+        padding: 0 1rem;
+    }
+
+    .blog-hero p {
+        padding: 0 1rem;
+    }
+
+    .category-tabs {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .blog-grid {
+        padding: 0 1rem;
+    }
+
+    /* Fix container widths */
+    .hero-content,
+    .section-content,
+    .skills-grid,
+    .projects-slider,
+    .contact-container {
+        width: 100%;
+        max-width: 100%;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        box-sizing: border-box;
+    }
+
+    /* Ensure coffee button doesn't cause horizontal scroll */
+    .coffee-btn {
+        right: 1rem;
+        font-size: 0.9rem;
+        padding: 0.5rem 1rem;
+    }
+
+    /* Adjust toast position for mobile */
+    .toast {
+        width: 90%;
+        left: 5%;
+        transform: translateY(100px);
+    }
+
+    .toast.show {
+        transform: translateY(0);
+    }
+}
     </style>
 </head>
 <body>
@@ -583,6 +696,20 @@
             </div>
         </div>
     </nav>
+    <div class="mobile-menu-btn">
+    <i class="fas fa-bars"></i>
+</div>
+
+<div class="mobile-menu">
+    <div class="mobile-menu-close">
+        <i class="fas fa-times"></i>
+    </div>
+    <a href="/blog">Home</a>
+    <a href="/" class="portfolio-link">Portfolio</a>
+    <a href="#featured">Featured</a>
+    <a href="#projects">Project Blogs</a>
+    <a href="#ai-news">AI News</a>
+</div>
 
     <!-- Hero Section -->
     <section class="blog-hero">
@@ -840,6 +967,34 @@ newsletterForm.addEventListener('submit', async (e) => {
                 });
             });
         });
+
+        // Mobile Menu Functionality
+const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+const mobileMenu = document.querySelector('.mobile-menu');
+const mobileMenuClose = document.querySelector('.mobile-menu-close');
+const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+
+mobileMenuBtn.addEventListener('click', () => {
+    mobileMenu.classList.add('active');
+});
+
+mobileMenuClose.addEventListener('click', () => {
+    mobileMenu.classList.remove('active');
+});
+
+// Close menu when clicking a link
+mobileMenuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        mobileMenu.classList.remove('active');
+    });
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
+        mobileMenu.classList.remove('active');
+    }
+});
     </script>
 </body>
 </html>
