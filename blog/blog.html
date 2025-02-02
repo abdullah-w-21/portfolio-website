@@ -544,14 +544,15 @@
         .toast.error {
             border-color: #ef4444;
         }
-/* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
     font-size: 1.5rem;
     color: var(--text);
     cursor: pointer;
     z-index: 1001;
-    margin-left: auto;
+    border: none;
+    background: none;
+    padding: 0.5rem;
 }
 
 /* Mobile Menu */
@@ -564,37 +565,87 @@
     max-width: 300px;
     height: 100vh;
     background: var(--surface);
-    padding: 2rem;
-    z-index: 1002;
-    transition: right 0.3s ease;
-    border-left: 1px solid rgba(124, 58, 237, 0.2);
+    padding: 4rem 2rem 2rem;
+    z-index: 1000;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
 }
 
 .mobile-menu.active {
-    right: 0;
+    transform: translateX(-100%);
+}
+
+.mobile-menu-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 1.5rem;
+    color: var(--text);
+    cursor: pointer;
+    padding: 0.5rem;
 }
 
 .mobile-menu a {
     display: block;
-    padding: 1rem 0;
+    padding: 1rem;
     color: var(--text);
     text-decoration: none;
     font-size: 1.2rem;
+    transition: all 0.3s ease;
     border-bottom: 1px solid rgba(124, 58, 237, 0.1);
 }
 
-.mobile-menu a:last-child {
-    border-bottom: none;
+.mobile-menu a:hover {
+    color: var(--secondary);
+    padding-left: 1.5rem;
+    background: rgba(124, 58, 237, 0.1);
 }
 
-.mobile-menu-close {
-    text-align: right;
-    font-size: 1.5rem;
-    color: var(--text);
-    cursor: pointer;
-    margin-bottom: 1rem;
+/* Navigation Updates */
+.nav-content {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
 }
 
+/* Updated Media Queries */
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+        margin-left: auto;
+    }
+
+    .mobile-menu {
+        display: block;
+    }
+
+    .nav-content {
+        padding: 0;
+    }
+
+    /* Ensure the logo stays visible */
+    .logo {
+        font-size: 1.5rem;
+        z-index: 1002;
+    }
+
+    /* Adjust mobile menu position */
+    .mobile-menu {
+        padding-top: 5rem;
+    }
+
+    /* Ensure mobile menu is above other content */
+    .mobile-menu.active {
+        right: 0;
+        transform: none;
+    }
+}
 /* Fix horizontal scrolling */
 html, body {
     max-width: 100%;
@@ -684,32 +735,33 @@ html, body {
 </head>
 <body>
     <!-- Navigation -->
-    <nav>
+   <nav>
         <div class="nav-content">
             <a href="/" class="logo">AW</a>
+            <button class="mobile-menu-btn" aria-label="Menu">
+                <i class="fas fa-bars"></i>
+            </button>
             <div class="nav-links">
                 <a href="/blog">Home</a>
-                <a href="/" class="portfolio-link">Portfolio</a>
+                <a href="/">Portfolio</a>
                 <a href="#featured">Featured</a>
                 <a href="#projects">Project Blogs</a>
                 <a href="#ai-news">AI News</a>
             </div>
         </div>
     </nav>
-    <div class="mobile-menu-btn">
-    <i class="fas fa-bars"></i>
-</div>
 
-<div class="mobile-menu">
-    <div class="mobile-menu-close">
-        <i class="fas fa-times"></i>
+    <div class="mobile-menu">
+        <button class="mobile-menu-close" aria-label="Close menu">
+            <i class="fas fa-times"></i>
+        </button>
+        <a href="/blog">Home</a>
+        <a href="/">Portfolio</a>
+        <a href="#featured">Featured</a>
+        <a href="#projects">Project Blogs</a>
+        <a href="#ai-news">AI News</a>
     </div>
-    <a href="/blog">Home</a>
-    <a href="/" class="portfolio-link">Portfolio</a>
-    <a href="#featured">Featured</a>
-    <a href="#projects">Project Blogs</a>
-    <a href="#ai-news">AI News</a>
-</div>
+
 
     <!-- Hero Section -->
     <section class="blog-hero">
@@ -969,32 +1021,34 @@ newsletterForm.addEventListener('submit', async (e) => {
         });
 
         // Mobile Menu Functionality
-const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-const mobileMenu = document.querySelector('.mobile-menu');
-const mobileMenuClose = document.querySelector('.mobile-menu-close');
-const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileMenuClose = document.querySelector('.mobile-menu-close');
+        const mobileMenuLinks = document.querySelectorAll('.mobile-menu a');
 
-mobileMenuBtn.addEventListener('click', () => {
-    mobileMenu.classList.add('active');
-});
+        function toggleMenu() {
+            mobileMenu.classList.toggle('active');
+            document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+        }
 
-mobileMenuClose.addEventListener('click', () => {
-    mobileMenu.classList.remove('active');
-});
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleMenu();
+        });
 
-// Close menu when clicking a link
-mobileMenuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-        mobileMenu.classList.remove('active');
-    });
-});
+        mobileMenuClose.addEventListener('click', toggleMenu);
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-    if (!mobileMenu.contains(e.target) && !mobileMenuBtn.contains(e.target)) {
-        mobileMenu.classList.remove('active');
-    }
-});
+        mobileMenuLinks.forEach(link => {
+            link.addEventListener('click', toggleMenu);
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileMenu.contains(e.target) && 
+                !mobileMenuBtn.contains(e.target) && 
+                mobileMenu.classList.contains('active')) {
+                toggleMenu();
+            }
+        });
     </script>
 </body>
 </html>
