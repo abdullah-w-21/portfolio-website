@@ -716,47 +716,41 @@
         }
 
         // Newsletter Subscription
-        const newsletterForm = document.querySelector('.newsletter-form');
-        newsletterForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const emailInput = newsletterForm.querySelector('input');
-            const email = emailInput.value;
-            
-            // Basic email validation
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) {
-                showToast('Please enter a valid email address', 'error');
-                return;
-            }
+const newsletterForm = document.querySelector('.newsletter-form');
+newsletterForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const emailInput = newsletterForm.querySelector('input');
+    const email = emailInput.value;
+    
+    // Basic email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        showToast('Please enter a valid email address', 'error');
+        return;
+    }
 
-            try {
-                // Read existing emails (if any)
-                let emails = [];
-                try {
-                    const response = await window.fs.readFile('emails.json', { encoding: 'utf8' });
-                    emails = JSON.parse(response);
-                } catch (error) {
-                    // File doesn't exist yet, start with empty array
-                    emails = [];
-                }
-
-                // Add new email
-                if (!emails.includes(email)) {
-                    emails.push(email);
-                    
-                    // Save updated emails
-                    await window.fs.writeFile('emails.json', JSON.stringify(emails, null, 2));
-                    
-                    showToast('Thanks for subscribing!');
-                    emailInput.value = '';
-                } else {
-                    showToast('You\'re already subscribed!', 'error');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                showToast('Something went wrong. Please try again.', 'error');
-            }
+    try {
+        const response = await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email })
         });
+
+        const data = await response.json();
+
+        if (!response.ok) {
+            throw new Error(data.error || 'Subscription failed');
+        }
+
+        showToast('Thanks for subscribing!');
+        emailInput.value = '';
+    } catch (error) {
+        console.error('Error:', error);
+        showToast(error.message || 'Something went wrong. Please try again.', 'error');
+    }
+});
 
         // Filter Function
         function filterPosts(category) {
